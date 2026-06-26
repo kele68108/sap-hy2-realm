@@ -22,7 +22,7 @@ fi
 FILE_PATH="./tmp_hy2"
 UUID="6948adff-5e1e-4f52-9c9c-11b707390b8b"
 PORT=8343
-REALM_ID="sap-bas-sg-hy2-kele666"
+REALM_ID="QwenPaw-sg-hy2-kele666"
 # ==========================================
 
 # --- 0. 防呆设计：自动清理旧进程 ---
