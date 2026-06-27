@@ -83,7 +83,7 @@ cat <<EOF > "$CONFIG_PATH"
 }
 EOF
 
-# --- 4. 生成本地客户端单文件配置 (Sing-box 1.14.0 纯净版) ---
+# --- 4. 生成本地客户端单文件配置 (V2rayN json配置文件) ---
 cat <<EOF > "$CLIENT_PATH"
 {
   "log": {
