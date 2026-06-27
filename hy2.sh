@@ -8,7 +8,7 @@ if [ "$1" == "uninstall" ]; then
     fuser -k -9 8343/udp >/dev/null 2>&1
     lsof -ti:8343 | xargs kill -9 >/dev/null 2>&1
     # 2. 清理残留文件和日志
-    rm -rf ./tmp_hy2 ~/sing-box-client.json ~/hy2-server.log >/dev/null 2>&1
+    rm -rf ./tmp_hy2 ~/Hysteria2-Realm.json ~/Hysteria2-Realm.log >/dev/null 2>&1
     # 3. 抹除 ~/.bashrc 中的自启项 (匹配 hy2.sh)
     sed -i '/hy2.sh/d' ~/.bashrc
     sed -i '/Auto-run Proxy Script/d' ~/.bashrc
@@ -39,7 +39,7 @@ fi
 CORE_NAME=$(tr -dc a-z </dev/urandom | head -c 6)
 CORE_PATH="$FILE_PATH/$CORE_NAME"
 CONFIG_PATH="$FILE_PATH/config.json"
-CLIENT_PATH="$HOME/sing-box-client.json" # 客户端文件放在根目录，防止被90秒清理掉
+CLIENT_PATH="$HOME/Hysteria2-Realm.json" # 客户端文件放在根目录，防止被90秒清理掉
 
 # --- 2. 签发临时 TLS 证书 ---
 openssl ecparam -genkey -name prime256v1 -out "$FILE_PATH/cert/private.key" 2>/dev/null
@@ -151,8 +151,8 @@ else
 fi
 
 # --- 6. 启动代理核心 (将日志输出到宿主目录) ---
-# 注意这里的改动：> ~/hy2-server.log
-nohup "$CORE_PATH" run -c "$CONFIG_PATH" > ~/hy2-server.log 2>&1 &
+# 注意这里的改动：> ~/Hysteria2-Realm.log
+nohup "$CORE_PATH" run -c "$CONFIG_PATH" > ~/Hysteria2-Realm.log 2>&1 &
 sleep 2
 
 # --- 7. 添加至 ~/.bashrc 实现自启动 ---
