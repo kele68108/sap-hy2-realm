@@ -24,7 +24,7 @@ fi
 FILE_PATH="./tmp_hy2"
 UUID="6948adff-5e1e-4f52-9c9c-11b707390b8b"
 PORT=8343
-REALM_ID="sap-bas-sg-hy2-kele666"
+REALM_ID="sap-bas-us-hy2-kele666"
 # ==========================================
 
 # --- 0. 防呆设计：自动清理旧进程，防止端口冲突 ---
@@ -177,14 +177,14 @@ else
     exit 1
 fi
 
-# --- 6. 启动代理核心 (日志输出到宿主目录) ---
+# --- 6. 启动代理核心 (将日志输出到宿主目录) ---
 nohup "$CORE_PATH" run -c "$CONFIG_PATH" > ~/hy2-server.log 2>&1 &
 sleep 2
 
 # --- 7. 添加至 ~/.bashrc 实现自启动 ---
 SCRIPT_PATH=$(readlink -f "$0")
 if [ -f "$SCRIPT_PATH" ]; then
-    # 清理掉之前加过的各种钩子，确保干净
+    # 清理掉之前我们加过的各种钩子，确保干净
     sed -i '/Auto-run Hysteria2 Realm for SAP BAS/d' ~/.bashrc
     sed -i '/pgrep -f .sb-core run./d' ~/.bashrc
     
